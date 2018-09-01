@@ -1,21 +1,17 @@
 # vue-cli-plugin-navigator
 
-## Project setup
-```
-yarn install
-```
+A page navigator on vue-cli 3.x multi-page mode
 
-### Compiles and hot-reloads for development
-```
-yarn run serve
-```
+ ## usage
 
-### Compiles and minifies for production
-```
-yarn run build
-```
+ yarn:
 
-### Lints and fixes files
-```
-yarn run lint
-```
+ ```
+ yarn add vue-cli-plugin-navigator --dev
+ ```
+
+ or npm:
+
+ ```
+ npm i vue-cli-plugin-navigator --dev
+ ```

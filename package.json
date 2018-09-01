@@ -1,6 +1,6 @@
 {
   "name": "vue-cli-plugin-navigator",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/longshihui/vue-cli-plugin-navigator.git"
@@ -36,7 +36,8 @@
   "main": "./lib/index.js",
   "files": [
     "dist",
-    "lib"
+    "lib",
+    "yarn.lock"
   ],
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.0.1",
@@ -45,9 +46,16 @@
     "@vue/cli-service": "^3.0.1",
     "@vue/eslint-config-airbnb": "^3.0.1",
     "@vue/eslint-config-typescript": "^3.0.1",
+    "commitizen": "^2.10.1",
+    "cz-conventional-changelog": "^2.1.0",
     "node-sass": "^4.9.0",
     "sass-loader": "^7.0.1",
     "typescript": "^3.0.0",
     "vue-template-compiler": "^2.5.17"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
