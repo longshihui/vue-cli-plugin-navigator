@@ -47,6 +47,7 @@
     "cz-conventional-changelog": "^2.1.0",
     "mockjs": "^1.0.1-beta3",
     "node-sass": "^4.9.0",
+    "postcss-url": "^8.0.0",
     "rollup": "^0.65.0",
     "rollup-plugin-commonjs": "^9.1.6",
     "rollup-plugin-node-resolve": "^3.3.0",
