@@ -1,22 +1,27 @@
 <template>
   <div id="app">
-    <h1>
-      Vue pages Navigator
-    </h1>
-    <search :pages="pages" v-model="filterPages"/>
-    <table class="pages-table">
-      <thead>
-        <th>页面</th>
-      </thead>
-      <tbody>
-        <tr v-for="config of visiblePages" :key="config.title">
-          <td>
-            <a :href="config.path">{{config.title}}</a>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-    <footer>
+    <section class="section">
+      <div id="logo"></div>
+    </section>
+   <section class="section">
+     <h1 class="h1">
+       Vue Pages Navigator
+     </h1>
+   </section>
+    <section class="section">
+      <v-input v-model="userInput" placeholder="search your page title..." center/>
+    </section>
+   <section class="section">
+     <v-table :data="filterPages" @row-click="rowClickHandler">
+       <v-table-col label="title" prop="title" />
+       <v-table-col label="type" prop="type" default="none" />
+       <v-table-col label="description" prop="description" default="none" />
+     </v-table>
+   </section>
+   <section class="section">
+      Note: click any table row will open the page
+   </section>
+    <footer class="footer">
       @ create by vue-cli-plugin-navigator
     </footer>
   </div>
@@ -25,46 +30,71 @@
 <script lang="ts">
 /* eslint-disable prefer-destructuring */
 import Vue from 'vue';
-import Search from './components/seach.vue';
+import VInput from './components/v-input';
+import { VTable, VTableCol } from './components/v-table';
 import getConfig from '../utils/getConfig';
 
 export default Vue.extend({
   name: 'app',
   components: {
-    Search,
+    VInput,
+    VTable,
+    VTableCol
   },
   data() {
     return {
+      userInput: '',
       pages: getConfig(),
-      filterPages: []
     };
   },
   computed: {
-      visiblePages(): PageConfig[] {
-          return this.filterPages.length === 0 ? this.pages : this.filterPages;
+      filterPages(): PageConfig[] {
+          return this.pages.filter((config: PageConfig) => {
+              return new RegExp(this.userInput, 'ig').test(config.title);
+          });
       }
   },
+    methods: {
+        rowClickHandler(row: PageConfig) {
+            location.href = row.path;
+        }
+    },
 });
 </script>
 
 <style lang="scss">
+body {
+  margin: 0;
+  padding: 0;
+}
 #app {
   font-family: sans-serif;
   box-sizing: border-box;
-  text-align: center;
   color: #2c3e50;
   margin-left: auto;
   margin-right: auto;
   padding: 0 10px;
   min-width: 700px;
-  max-width: 1200px;
+  max-width: 1024px;
 }
 
-h1 {
-  margin: 60px auto;
+.section {
+  margin: 20px 0;
 }
 
-footer {
+.h1 {
+  text-align: center;
+}
+
+#logo {
+  margin: 0 auto;
+  width: 150px;
+  height: 150px;
+  background: url("~@/assets/logo.png");
+  background-size: cover;
+}
+
+.footer {
   position: absolute;
   left: 0;
   bottom: 0;
@@ -73,10 +103,8 @@ footer {
   text-align: center;
 }
 
-table {
-  width: 100%;
-  td, th {
-    line-height: 40px;
-  }
+.link {
+    color: #e83030;
+    text-decoration: none;
 }
 </style>
