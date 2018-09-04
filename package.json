@@ -6,10 +6,18 @@
     "url": "git+ssh://git@github.com/longshihui/vue-cli-plugin-navigator.git"
   },
   "keywords": [
+    "vue",
+    "cli",
+    "plugin",
+    "helper",
+    "pages",
     "vue-cli",
+    "vue-cli3",
     "vue-cli3.0",
     "vue-cli-plugin",
     "multi",
+    "multi pages mode",
+    "multi mode",
     "multiple-pages",
     "multiple-pages-index",
     "multiple-pages-navigator",
