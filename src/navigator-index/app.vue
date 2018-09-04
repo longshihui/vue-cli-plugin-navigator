@@ -26,8 +26,7 @@
 /* eslint-disable prefer-destructuring */
 import Vue from 'vue';
 import Search from './components/seach.vue';
-// @ts-ignore
-const configs: PageConfig[] = JSON.parse(window.configs);
+import getConfig from '../utils/getConfig';
 
 export default Vue.extend({
   name: 'app',
@@ -36,7 +35,7 @@ export default Vue.extend({
   },
   data() {
     return {
-      pages: configs,
+      pages: getConfig(),
       filterPages: []
     };
   },

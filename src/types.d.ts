@@ -1,4 +1,4 @@
-interface PageConfig {
+declare interface PageConfig {
     title: string,
     path: string,
     type?: string,
