@@ -8,10 +8,7 @@ export default [
     input: './src/navigator-index/main.ts',
     output: {
       file: './dist/navigator-index.js',
-      format: 'iife',
-      globals: {
-        vue: 'Vue'
-      }
+      format: 'esm'
     },
     external: [
       'vue'
