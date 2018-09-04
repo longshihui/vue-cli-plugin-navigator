@@ -2,7 +2,7 @@
 
 A page navigator on vue-cli 3.x multi-page mode
 
- ## usage
+## usage
 
  yarn:
 
