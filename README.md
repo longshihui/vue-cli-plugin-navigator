@@ -8,14 +8,14 @@ On the plugin's home page, it lists the pages you defined in vue.config.js. You 
 
 ## usage
 
- yarn:
+yarn:
 
- ```
- yarn add vue-cli-plugin-navigator --dev
- ```
+```
+yarn add vue-cli-plugin-navigator --dev
+```
 
- or npm:
+or npm:
 
- ```
- npm i vue-cli-plugin-navigator --dev
- ```
+```
+npm i vue-cli-plugin-navigator --dev
+```

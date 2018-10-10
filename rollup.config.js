@@ -11,15 +11,8 @@ export default [
       file: './dist/navigator-index.js',
       format: 'esm'
     },
-    external: [
-      'vue'
-    ],
-    plugins: [
-      resolve(),
-      commonjs(),
-      typescript(),
-      vue()
-    ]
+    external: ['vue'],
+    plugins: [resolve(), commonjs(), typescript(), vue()]
   },
   {
     input: './src/navigator-float/main.ts',
@@ -27,14 +20,7 @@ export default [
       file: './dist/navigator-float.js',
       format: 'iife'
     },
-    external: [
-      'vue'
-    ],
-    plugins: [
-      resolve(),
-      commonjs(),
-      typescript(),
-      vue()
-    ]
+    external: ['vue'],
+    plugins: [resolve(), commonjs(), typescript(), vue()]
   }
-]
+];

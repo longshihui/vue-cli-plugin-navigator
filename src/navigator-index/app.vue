@@ -64,28 +64,28 @@ export default Vue.extend({
     };
   },
   computed: {
-      filterPages(): PageConfig[] {
-          return this.pages.filter((config: PageConfig) => {
-              return new RegExp(this.userInput, 'ig').test(config.title);
-          });
-      }
+    filterPages(): PageConfig[] {
+      return this.pages.filter((config: PageConfig) => {
+        return new RegExp(this.userInput, 'ig').test(config.title);
+      });
+    }
   },
-    methods: {
-        rowClickHandler(row: PageConfig) {
-            location.href = row.path;
-        },
-        open(content: string) {
-            this.detailContent = content;
-            this.showDetail = true;
-        }
+  methods: {
+    rowClickHandler(row: PageConfig) {
+      location.href = row.path;
     },
+    open(content: string) {
+      this.detailContent = content;
+      this.showDetail = true;
+    }
+  }
 });
 </script>
 
 <style lang="scss">
-    @import "~@/assets/color";
+@import '~@/assets/color';
 html {
-    height: 100%;
+  height: 100%;
 }
 body {
   margin: 0;
@@ -132,17 +132,17 @@ body {
 }
 
 .link {
-    color: $bright;
-    text-decoration: none;
+  color: $bright;
+  text-decoration: none;
 }
 
 .v-table__row:hover {
-    .link {
-        color: #ffffff;
-    }
+  .link {
+    color: #ffffff;
+  }
 }
 
 .tag {
-    padding: 2px 5px;
+  padding: 2px 5px;
 }
 </style>
