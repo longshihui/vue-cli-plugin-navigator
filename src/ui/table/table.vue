@@ -20,11 +20,17 @@
        transition: .3s background-color ease;
        &:hover {
            background: #42b983;
+           color: #ffffff;
        }
    }
     .v-table__col {
+        min-height: 40px;
         flex: 1;
-        line-height: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        word-break: break-word;
+        line-height: 1.5;
     }
 }
 </style>

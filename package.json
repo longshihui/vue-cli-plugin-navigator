@@ -34,7 +34,7 @@
     "serve": "vue-cli-service serve",
     "build": "rollup -c rollup.config.js",
     "lint": "vue-cli-service lint",
-    "prepublish": "npm run build"
+    "preversion": "npm run build"
   },
   "dependencies": {
     "@vue/ui": "^0.5.5",
