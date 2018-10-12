@@ -1,5 +1,8 @@
 module.exports = {
   plugins: {
-    autoprefixer: {}
+    autoprefixer: {},
+    "postcss-url": {
+      url: 'inline'
+    }
   }
 };

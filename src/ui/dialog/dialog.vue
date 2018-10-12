@@ -16,7 +16,8 @@
 </template>
 
 <style lang="scss">
-@import '~@/assets/color';
+@import '../../assets/color';
+@import "../../assets/img";
 .v-dialog {
   border-radius: 5px;
   position: fixed;
@@ -43,7 +44,7 @@
   transform: translateY(-50%);
   width: 20px;
   height: 20px;
-  background: url('./close.svg');
+  background: url($closer);
   background-size: cover;
   cursor: pointer;
 }
@@ -56,7 +57,7 @@
   padding: 5px 20px;
   text-align: center;
 }
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 545px) {
   // copy by animate.css bounceIn
   @keyframes bounceIn {
     from,
@@ -147,7 +148,7 @@
 import Vue from 'vue';
 import Layer from '../layer';
 
-const layer = new Layer();
+const layer: Vue = new Layer();
 layer.$mount();
 document.body.appendChild(layer.$el);
 
@@ -174,6 +175,7 @@ export default Vue.extend({
       this.show = visible;
     },
     show(show) {
+      //@ts-ignore
       layer.visible = show;
       this.$emit('update:visible', show);
       this.$emit('change', show);

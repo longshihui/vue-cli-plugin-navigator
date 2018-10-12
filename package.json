@@ -34,16 +34,15 @@
     "serve": "vue-cli-service serve",
     "build": "rollup -c rollup.config.js",
     "lint": "vue-cli-service lint",
-    "preversion": "npm run build",
+    "prepublishOnly": "npm run build",
     "beautiful": "prettier --write \"**/*.{js,vue,json,css,md}\""
   },
   "dependencies": {
-    "@vue/ui": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
     "vue": "^2.5.17",
     "webpack": "^4.17.1"
   },
-  "main": "./lib/index.js",
+  "main": "./dist/vue-cli.inspect.js",
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.0.1",
     "@vue/cli-plugin-eslint": "^3.0.1",
@@ -55,13 +54,17 @@
     "cz-conventional-changelog": "^2.1.0",
     "mockjs": "^1.0.1-beta3",
     "node-sass": "^4.9.0",
+    "postcss": "^7.0.5",
     "postcss-url": "^8.0.0",
     "prettier": "^1.14.3",
-    "rollup": "^0.65.0",
+    "rimraf": "^2.6.2",
+    "rollup": "^0.66.6",
     "rollup-plugin-commonjs": "^9.1.6",
+    "rollup-plugin-css-only": "^0.4.0",
     "rollup-plugin-node-resolve": "^3.3.0",
+    "rollup-plugin-postcss": "^1.6.2",
     "rollup-plugin-typescript2": "^0.17.1",
-    "rollup-plugin-vue": "^4.3.2",
+    "rollup-plugin-vue": "4.4.0-alpha.0",
     "sass-loader": "^7.0.1",
     "typescript": "^3.0.0",
     "vue-template-compiler": "^2.5.17"

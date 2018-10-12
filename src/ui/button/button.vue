@@ -10,7 +10,7 @@
 </template>
 
 <style lang="scss">
-@import '~@/assets/color';
+@import '../../assets/color';
 .v-button {
   outline: none;
   border: none;

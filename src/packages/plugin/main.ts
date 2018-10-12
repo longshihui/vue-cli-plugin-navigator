@@ -1,11 +1,12 @@
 /* eslint-disable*/
-const createNavigatorData = require('./utils/createNavigatorData');
+const createNavigatorData = require('../../utils/createNavigatorData');
+const PLUGIN_NAME:string = 'vue-cli-plugin-navigator';
 /**
  * plugin entry
  * @param api refer @vue/cli-serve PluginApi
  * @param projectOptions vue.config.js
  */
-module.exports = (api, projectOptions) => {
+module.exports = (api: any, projectOptions: any) => {
   if (process.env.NODE_ENV !== 'development') return;
 
   const pagesConfig = projectOptions.pages;
@@ -14,7 +15,7 @@ module.exports = (api, projectOptions) => {
     typeof pagesConfig === 'object' &&
     Object.keys(pagesConfig).length
   ) {
-    const resolve = path =>
+    const resolve = (path: string) =>
       api.resolve(
         require('path').posix.join(
           'node_modules/vue-cli-plugin-navigator',
@@ -23,23 +24,23 @@ module.exports = (api, projectOptions) => {
       );
     const navigatorData = createNavigatorData(projectOptions.pages);
 
-    api.chainWebpack(config => {
+    api.chainWebpack((config: any) => {
       // add navigator entry
       // replace original vue-cli config
       config
-        .entry('__navigator__')
+        .entry(PLUGIN_NAME)
         .add('vue')
         .add(resolve('./dist/navigator-index.js'))
         .end();
       // add navigator entry html
       config
-        .plugin('__navigator__html')
+        .plugin(PLUGIN_NAME)
         .use(require(resolve('node_modules/html-webpack-plugin')), [
           {
             meta: {
               navigator: navigatorData
             },
-            filename: '__navigator__.html',
+            filename: `${PLUGIN_NAME}.html`,
             favicon: resolve('./public/favicon.ico'),
             title: 'welcome to navigator center',
             template: resolve('./public/index.html'),
@@ -47,9 +48,9 @@ module.exports = (api, projectOptions) => {
           }
         ]);
       // refer the index page to plugin index
-      config.devServer.set('index', '__navigator__.html');
+      config.devServer.set('index', `${PLUGIN_NAME}.html`);
       // default open plugin index when user config devServer.open = true
-      config.devServer.openPage('__navigator__.html');
+      config.devServer.openPage(`${PLUGIN_NAME}.html`);
       // rewrite devServer history fallback page to plugin index
       config.devServer.historyApiFallback({
         rewrites: [
@@ -57,23 +58,10 @@ module.exports = (api, projectOptions) => {
             from: /./,
             to: require('path').posix.join(
               projectOptions.baseUrl,
-              '__navigator__.html'
+              `${PLUGIN_NAME}.html`
             )
           }
         ]
-      });
-      Object.keys(pagesConfig).forEach(function(pageKey) {
-        // add navigator-float plugin to user config page
-        config.entry(pageKey).add(resolve('./dist/navigator-float.js'));
-        // inject navigator-float need data to meta tag
-        config.plugin('html-' + pageKey).tap(options => {
-          options.forEach(options => {
-            options.meta = Object.assign(options.meta || {}, {
-              navigator: navigatorData
-            });
-          });
-          return options;
-        });
       });
     });
   }
