@@ -1,5 +1,5 @@
 /* eslint-disable*/
-const createNavigatorData = require('../../utils/createNavigatorData');
+const createPluginData = require('./createPluginData');
 const PLUGIN_NAME:string = 'vue-cli-plugin-navigator';
 /**
  * plugin entry
@@ -22,7 +22,7 @@ module.exports = (api: any, projectOptions: any) => {
           path
         )
       );
-    const navigatorData = createNavigatorData(projectOptions.pages);
+    const navigatorData = createPluginData(projectOptions);
 
     api.chainWebpack((config: any) => {
       // add navigator entry

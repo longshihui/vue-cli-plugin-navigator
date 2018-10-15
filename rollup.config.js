@@ -9,7 +9,7 @@ import autoprefixer from 'autoprefixer';
 import postcssURL from 'postcss-url';
 
 function getPackage(name) {
-  return path.posix.resolve('./src/packages', name, 'main.ts');
+    return path.posix.resolve('./src/packages', name, 'main.ts');
 }
 
 process.env.NODE_ENV = 'production';
@@ -17,37 +17,37 @@ process.env.NODE_ENV = 'production';
 rm.sync('./dist');
 
 export default [
-  {
-    input: getPackage('homepage'),
-    output: {
-      file: './dist/homepage.js',
-      format: 'esm'
-    },
-    external: ['vue'],
-    plugins: [
-      resolve(),
-      commonjs(),
-      typescript(),
-      css(),
-      vue({
-        css: false,
-        style: {
-          postcssPlugins: [
-            autoprefixer(),
-            postcssURL({
-              url: 'inline'
+    {
+        input: getPackage('homepage'),
+        output: {
+            file: './dist/homepage.js',
+            format: 'esm'
+        },
+        external: ['vue'],
+        plugins: [
+            resolve(),
+            commonjs(),
+            typescript(),
+            css(),
+            vue({
+                css: false,
+                style: {
+                    postcssPlugins: [
+                        autoprefixer(),
+                        postcssURL({
+                            url: 'inline'
+                        })
+                    ]
+                }
             })
-          ]
-        }
-      })
-    ]
-  },
-  {
-    input: getPackage('plugin'),
-    output: {
-      file: './dist/vue-cli.inspect.js',
-      format: 'cjs'
+        ]
     },
-    plugins: [typescript()]
-  }
+    {
+        input: getPackage('plugin'),
+        output: {
+            file: './dist/vue-cli.inspect.js',
+            format: 'cjs'
+        },
+        plugins: [typescript()]
+    }
 ];

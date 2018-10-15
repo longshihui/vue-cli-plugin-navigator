@@ -33,70 +33,70 @@
 </template>
 
 <style lang="scss">
-    @import '../../assets/color';
-    @import "../../assets/img";
-    html {
-        height: 100%;
-    }
-    body {
-        margin: 0;
-        padding: 0;
-        height: 100%;
-    }
-    #app {
-        position: relative;
-        font-family: sans-serif;
-        box-sizing: border-box;
-        color: #2c3e50;
-        margin-left: auto;
-        margin-right: auto;
-        padding: 1px 10px 42px;
-        min-width: 320px; // 移动端最小屏幕
-        max-width: 1200px; // 最大尺寸
-        min-height: 100%;
-        -webkit-overflow-scrolling: touch;
-    }
+@import '../../assets/color';
+@import '../../assets/img';
+html {
+    height: 100%;
+}
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+#app {
+    position: relative;
+    font-family: sans-serif;
+    box-sizing: border-box;
+    color: #2c3e50;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1px 10px 42px;
+    min-width: 320px; // 移动端最小屏幕
+    max-width: 1200px; // 最大尺寸
+    min-height: 100%;
+    -webkit-overflow-scrolling: touch;
+}
 
-    .section {
-        margin: 20px 0;
-    }
+.section {
+    margin: 20px 0;
+}
 
-    .h1 {
-        text-align: center;
-    }
+.h1 {
+    text-align: center;
+}
 
-    #logo {
-        margin: 0 auto;
-        width: 150px;
-        height: 150px;
-        background: url($logo-img);
-        background-size: cover;
-    }
+#logo {
+    margin: 0 auto;
+    width: 150px;
+    height: 150px;
+    background: url($logo-img);
+    background-size: cover;
+}
 
-    .footer {
-        position: absolute;
-        left: 0;
-        bottom: 0;
-        padding: 10px 0;
-        width: 100%;
-        text-align: center;
-    }
+.footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    padding: 10px 0;
+    width: 100%;
+    text-align: center;
+}
 
+.link {
+    color: $bright;
+    text-decoration: none;
+}
+
+.v-table__row:hover {
     .link {
-        color: $bright;
-        text-decoration: none;
+        color: #ffffff;
     }
-
-    .v-table__row:hover {
-        .link {
-            color: #ffffff;
-        }
+}
+@media screen and (max-width: 544px) {
+    .v-table__col:nth-child(2) {
+        display: none;
     }
-    @media screen and (max-width: 544px) {
-        .v-table__col:nth-child(2) {
-            display: none;
-        }
-    }
+}
 </style>
 
 <script lang="ts">
@@ -104,41 +104,43 @@
 import Vue from 'vue';
 import VInput from '../../ui/input/index';
 import { VTable, VTableCol } from '../../ui/table/index';
-import getConfig from '../../utils/getConfig';
+import getConfig from './getConfig';
 import PageDetailView from './page.detail.vue';
 
 export default Vue.extend({
-  name: 'app',
-  components: {
-    VInput,
-    VTable,
-    VTableCol,
-    PageDetailView
-  },
-  data() {
-    return {
-      userInput: '',
-      pages: getConfig(),
-      showDetail: false,
-      showPageDetail: null
-    };
-  },
-  computed: {
-    filterPages(): PageConfig[] {
-      return this.pages.filter((config: PageConfig) => {
-        return new RegExp(this.userInput, 'ig').test(config.title);
-      });
-    }
-  },
-  methods: {
-    rowClickHandler(row: PageConfig) {
-      location.href = row.path;
+    name: 'app',
+    components: {
+        VInput,
+        VTable,
+        VTableCol,
+        PageDetailView
     },
-    open(pageConfig: PageConfig) {
-      //@ts-ignore
-      this.showPageDetail = pageConfig;
-      this.showDetail = true;
+    data() {
+        const pluginConfig: PluginConfig = getConfig();
+        return {
+            userInput: '',
+            tags: pluginConfig.defineTags,
+            pages: pluginConfig.pages,
+            showDetail: false,
+            showPageDetail: null
+        };
+    },
+    computed: {
+        filterPages(): PageConfig[] {
+            return this.pages.filter((config: PageConfig) => {
+                return new RegExp(this.userInput, 'ig').test(config.title);
+            });
+        }
+    },
+    methods: {
+        rowClickHandler(row: PageConfig) {
+            location.href = row.path;
+        },
+        open(pageConfig: PageConfig) {
+            //@ts-ignore
+            this.showPageDetail = pageConfig;
+            this.showDetail = true;
+        }
     }
-  }
 });
 </script>
