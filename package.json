@@ -68,7 +68,8 @@
         "rollup-plugin-vue": "4.4.0-alpha.0",
         "sass-loader": "^7.0.1",
         "typescript": "^3.0.0",
-        "vue-template-compiler": "^2.5.17"
+        "vue-template-compiler": "^2.5.17",
+        "yorkie": "^2.0.0"
     },
     "config": {
         "commitizen": {
