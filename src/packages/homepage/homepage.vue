@@ -14,7 +14,14 @@
    <section class="section">
      <v-table :data="filterPages" @row-click="rowClickHandler">
        <v-table-col label="Title" prop="title" />
-       <v-table-col label="Tags" prop="type" default="none" />
+       <v-table-col label="Tags" prop="type" default="none">
+         <template slot-scope="props">
+             <span class="tag"
+                   v-for="tagName of props.row.tags"
+                   :key="tagName"
+                   :style="{ backgroundColor: getTagColor(tagName) }">{{tagName}}</span>
+         </template>
+       </v-table-col>
        <v-table-col label="More information" default="none">
            <template slot-scope="props">
                <a class="link" href="javascript:;" @click.stop="open(props.row)">more...</a>
@@ -28,13 +35,11 @@
     <footer class="footer">
       @ create by vue-cli-plugin-navigator
     </footer>
-    <page-detail-view :visible.sync="showDetail" :page-config="showPageDetail"/>
+    <page-detail-view :tags="tags" :visible.sync="showDetail" :page-config="showPageDetail"/>
   </div>
 </template>
 
 <style lang="scss">
-@import '../../assets/color';
-@import '../../assets/img';
 html {
     height: 100%;
 }
@@ -56,6 +61,23 @@ body {
     min-height: 100%;
     -webkit-overflow-scrolling: touch;
 }
+.tag {
+    display: inline-block;
+    border-radius: 10px;
+    margin-right: 5px;
+    padding: 2px 5px;
+    color: #ffffff;
+    font-size: 12px;
+}
+@media screen and (max-width: 544px) {
+    .v-table__col:nth-child(2) {
+        display: none;
+    }
+}
+</style>
+<style lang="scss" scoped>
+@import '../../assets/color';
+@import '../../assets/img';
 
 .section {
     margin: 20px 0;
@@ -92,11 +114,6 @@ body {
         color: #ffffff;
     }
 }
-@media screen and (max-width: 544px) {
-    .v-table__col:nth-child(2) {
-        display: none;
-    }
-}
 </style>
 
 <script lang="ts">
@@ -122,7 +139,11 @@ export default Vue.extend({
             tags: pluginConfig.defineTags,
             pages: pluginConfig.pages,
             showDetail: false,
-            showPageDetail: null
+            showPageDetail: {
+                title: '',
+                tags: [],
+                description: ''
+            }
         };
     },
     computed: {
@@ -140,6 +161,10 @@ export default Vue.extend({
             //@ts-ignore
             this.showPageDetail = pageConfig;
             this.showDetail = true;
+        },
+        getTagColor(tagName: string) {
+            const tag = this.tags.find(tag => tag.name === tagName);
+            return tag ? tag.color : '#2e4053';
         }
     }
 });

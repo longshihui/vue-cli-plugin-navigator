@@ -50,6 +50,7 @@
 }
 .v-dialog__body {
     min-height: 40px;
+    overflow: auto;
 }
 .v-dialog__footer {
     box-sizing: border-box;
@@ -58,6 +59,9 @@
     text-align: center;
 }
 @media screen and (min-width: 545px) {
+    .v-dialog__body {
+        max-height: calc(100vh - 40px * 4);
+    }
     // copy by animate.css bounceIn
     @keyframes bounceIn {
         from,
@@ -117,6 +121,9 @@
         border-radius: 0;
         width: 100%;
         height: 100%;
+    }
+    .v-dialog__body {
+        max-height: calc(100vh - 40px);
     }
     .v-dialog__footer {
         display: none;
