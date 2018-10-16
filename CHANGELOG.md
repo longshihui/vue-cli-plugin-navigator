@@ -1,3 +1,17 @@
+<a name="1.2.0"></a>
+
+# [1.2.0](https://github.com/longshihui/vue-cli-plugin-navigator/compare/v1.1.2...v1.2.0) (2018-10-16)
+
+### Bug Fixes
+
+-   **lib/index.js:** 修复针对主页生效模式不正确的问题 ([1a31fa6](https://github.com/longshihui/vue-cli-plugin-navigator/commit/1a31fa6))
+
+### Features
+
+-   **navigator-index:** 新增"更多信息"栏，移除原有的描述、类型栏 ([3ce6ac0](https://github.com/longshihui/vue-cli-plugin-navigator/commit/3ce6ac0))
+-   **package/plugin:** 新增插件所需要的数据 ([a897d87](https://github.com/longshihui/vue-cli-plugin-navigator/commit/a897d87))
+-   **page.detail.view、dialog:** 新增 tags、description 字段展示、dlalog 组件支持响应式 ([08c6dc8](https://github.com/longshihui/vue-cli-plugin-navigator/commit/08c6dc8))
+
 <a name="1.1.2"></a>
 
 ## [1.1.2](https://github.com/longshihui/vue-cli-plugin-navigator/compare/v1.1.1...v1.1.2) (2018-09-04)
