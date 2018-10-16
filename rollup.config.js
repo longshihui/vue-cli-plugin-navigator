@@ -28,9 +28,7 @@ export default [
             resolve(),
             commonjs(),
             typescript(),
-            css(),
             vue({
-                css: false,
                 style: {
                     postcssPlugins: [
                         autoprefixer(),
@@ -41,13 +39,5 @@ export default [
                 }
             })
         ]
-    },
-    {
-        input: getPackage('plugin'),
-        output: {
-            file: './dist/vue-cli.inspect.js',
-            format: 'cjs'
-        },
-        plugins: [typescript()]
     }
 ];

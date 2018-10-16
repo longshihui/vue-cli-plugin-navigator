@@ -68,6 +68,7 @@ body {
     padding: 2px 5px;
     color: #ffffff;
     font-size: 12px;
+    flex: 0 0 auto;
 }
 @media screen and (max-width: 544px) {
     .v-table__col:nth-child(2) {

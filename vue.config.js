@@ -1,4 +1,4 @@
-const mockNavigatorData = require('./src/packages/plugin/mockPluginData');
+const mockNavigatorData = require('./lib/mockPluginData');
 
 module.exports = {
     devServer: {

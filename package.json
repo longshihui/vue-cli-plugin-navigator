@@ -43,7 +43,7 @@
         "vue": "^2.5.17",
         "webpack": "^4.17.1"
     },
-    "main": "./dist/vue-cli.inspect.js",
+    "main": "./lib/vue-cli.inspect.js",
     "devDependencies": {
         "@vue/cli-plugin-babel": "^3.0.1",
         "@vue/cli-plugin-eslint": "^3.0.1",
