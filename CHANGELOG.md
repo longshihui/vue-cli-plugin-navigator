@@ -1,10 +1,13 @@
-<a name="1.2.0"></a>
+<a name="1.2.2"></a>
 
-# [1.2.0](https://github.com/longshihui/vue-cli-plugin-navigator/compare/v1.1.2...v1.2.0) (2018-10-16)
+## [1.2.2](https://github.com/longshihui/vue-cli-plugin-navigator/compare/v1.2.0...v1.2.2) (2018-11-07)
 
 ### Bug Fixes
 
+-   **inspect:** 修复 html-webpack-plugin 获取失败的问题 ([58ea877](https://github.com/longshihui/vue-cli-plugin-navigator/commit/58ea877))
 -   **lib/index.js:** 修复针对主页生效模式不正确的问题 ([1a31fa6](https://github.com/longshihui/vue-cli-plugin-navigator/commit/1a31fa6))
+-   **rollup:** 修复 rollup 依赖报错的问题 ([215e3cb](https://github.com/longshihui/vue-cli-plugin-navigator/commit/215e3cb))
+-   修复引用为 null 的 bug ([ddcb7c8](https://github.com/longshihui/vue-cli-plugin-navigator/commit/ddcb7c8))
 
 ### Features
 
