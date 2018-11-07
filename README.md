@@ -1,6 +1,6 @@
-# vue-cli-plugin-navigator
+# vue-cli-plugin-navigator [![Build Status](https://travis-ci.org/longshihui/vue-cli-plugin-navigator.svg?branch=master)](https://travis-ci.org/longshihui/vue-cli-plugin-navigator)
 
-Page navigation in a vue-cli 3.x multi-page mode.
+> Page navigation in a vue-cli 3.x multi-page mode.
 
 This plugin will provide a homepage.
 
