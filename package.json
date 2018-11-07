@@ -36,13 +36,13 @@
         "lint": "vue-cli-service lint",
         "prepublishOnly": "npm run build",
         "beautiful": "prettier --write \"**/*.{js,vue,json,css,md}\"",
-        "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0"
+        "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
+        "test": "jest --config jest.config.js"
     },
     "dependencies": {
         "html-webpack-plugin": "^3.2.0",
         "lodash.get": "^4.4.2",
-        "vue": "^2.5.17",
-        "webpack": "^4.17.1"
+        "vue": "^2.5.17"
     },
     "main": "./lib/vue-cli-plugin.js",
     "devDependencies": {
@@ -55,6 +55,7 @@
         "commitizen": "^2.10.1",
         "cz-conventional-changelog": "^2.1.0",
         "husky": "^1.1.2",
+        "jest": "^23.6.0",
         "lint-staged": "^7.3.0",
         "mockjs": "^1.0.1-beta3",
         "node-sass": "^4.9.0",
