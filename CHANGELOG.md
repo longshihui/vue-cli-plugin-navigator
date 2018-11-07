@@ -1,3 +1,11 @@
+<a name="1.3.0"></a>
+
+# [1.3.0](https://github.com/longshihui/vue-cli-plugin-navigator/compare/v1.2.4...v1.3.0) (2018-11-07)
+
+### Features
+
+-   **插件:** 新增插件页面标题自动读取用户工程 package.json 的 name ([00343d3](https://github.com/longshihui/vue-cli-plugin-navigator/commit/00343d3))
+
 <a name="1.2.4"></a>
 
 ## [1.2.4](https://github.com/longshihui/vue-cli-plugin-navigator/compare/v1.2.3...v1.2.4) (2018-11-07)
