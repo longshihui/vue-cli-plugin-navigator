@@ -1,6 +1,6 @@
 {
     "name": "vue-cli-plugin-navigator",
-    "version": "1.2.3",
+    "version": "1.2.4",
     "repository": {
         "type": "git",
         "url": "git+ssh://git@github.com/longshihui/vue-cli-plugin-navigator.git"
