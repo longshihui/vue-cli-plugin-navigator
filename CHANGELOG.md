@@ -1,6 +1,6 @@
-<a name="1.3.0"></a>
+<a name="1.3.1"></a>
 
-# [1.3.0](https://github.com/longshihui/vue-cli-plugin-navigator/compare/v1.2.4...v1.3.0) (2018-11-07)
+## [1.3.1](https://github.com/longshihui/vue-cli-plugin-navigator/compare/v1.3.0...v1.3.1) (2018-11-08)
 
 ### Features
 
