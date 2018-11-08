@@ -1,4 +1,6 @@
-# vue-cli-plugin-navigator [![Build Status](https://travis-ci.org/longshihui/vue-cli-plugin-navigator.svg?branch=master)](https://travis-ci.org/longshihui/vue-cli-plugin-navigator)
+# vue-cli-plugin-navigator
+
+[![Build Status](https://travis-ci.org/longshihui/vue-cli-plugin-navigator.svg?branch=master)](https://travis-ci.org/longshihui/vue-cli-plugin-navigator) [![npm](https://img.shields.io/npm/v/vue-cli-plugin-navigator.svg)](https://www.npmjs.com/package/vue-cli-plugin-navigator) [![npm](https://img.shields.io/npm/dw/vue-cli-plugin-navigator.svg)](https://www.npmjs.com/package/vue-cli-plugin-navigator) [![NpmLicense](https://img.shields.io/npm/l/vue-cli-plugin-navigator.svg)](https://www.npmjs.com/package/vue-cli-plugin-navigator)
 
 > Page navigation in a vue-cli 3.x multi-page mode.
 
