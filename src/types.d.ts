@@ -15,6 +15,7 @@ declare interface Tag {
 }
 
 declare interface PluginConfig {
+    appName: string,
     defineTags: Tag[],
     pages: PageConfig[]
 }

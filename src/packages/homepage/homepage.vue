@@ -1,42 +1,52 @@
 <template>
-  <div id="app">
-    <section class="section">
-      <div id="logo"></div>
-    </section>
-   <section class="section">
-     <h1 class="h1">
-       Vue Pages Navigator
-     </h1>
-   </section>
-    <section class="section">
-      <v-input v-model="userInput" placeholder="Search for the page you want to open..." center/>
-    </section>
-   <section class="section">
-     <v-table :data="filterPages" @row-click="rowClickHandler">
-       <v-table-col label="Title" prop="title" />
-       <v-table-col label="Tags" prop="type" default="none">
-         <template slot-scope="props">
-             <span class="tag"
-                   v-for="tagName of props.row.tags"
-                   :key="tagName"
-                   :style="{ backgroundColor: getTagColor(tagName) }">{{tagName}}</span>
-         </template>
-       </v-table-col>
-       <v-table-col label="More information" default="none">
-           <template slot-scope="props">
-               <a class="link" href="javascript:;" @click.stop="open(props.row)">more...</a>
-           </template>
-       </v-table-col>
-     </v-table>
-   </section>
-   <section class="section">
-       Tip: Clicking on any row in the table will open the page.
-   </section>
-    <footer class="footer">
-      @ create by vue-cli-plugin-navigator
-    </footer>
-    <page-detail-view :tags="tags" :visible.sync="showDetail" :page-config="showPageDetail"/>
-  </div>
+    <div id="app">
+        <section class="section"><div id="logo"></div></section>
+        <section class="section">
+            <h1 class="h1">{{ appName }}</h1>
+        </section>
+        <section class="section">
+            <v-input
+                v-model="userInput"
+                placeholder="Search for the page you want to open..."
+                center
+            />
+        </section>
+        <section class="section">
+            <v-table :data="filterPages" @row-click="rowClickHandler">
+                <v-table-col label="Title" prop="title" />
+                <v-table-col label="Tags" prop="type" default="none">
+                    <template slot-scope="props">
+                        <span
+                            class="tag"
+                            v-for="tagName of props.row.tags"
+                            :key="tagName"
+                            :style="{ backgroundColor: getTagColor(tagName) }"
+                            >{{ tagName }}</span
+                        >
+                    </template>
+                </v-table-col>
+                <v-table-col label="More information" default="none">
+                    <template slot-scope="props">
+                        <a
+                            class="link"
+                            href="javascript:;"
+                            @click.stop="open(props.row);"
+                            >more...</a
+                        >
+                    </template>
+                </v-table-col>
+            </v-table>
+        </section>
+        <section class="section">
+            Tip: Clicking on any row in the table will open the page.
+        </section>
+        <footer class="footer">@ create by vue-cli-plugin-navigator</footer>
+        <page-detail-view
+            :tags="tags"
+            :visible.sync="showDetail"
+            :page-config="showPageDetail"
+        />
+    </div>
 </template>
 
 <style lang="scss">
@@ -137,6 +147,9 @@ export default Vue.extend({
         const pluginConfig: PluginConfig = getConfig();
         return {
             userInput: '',
+            appName: pluginConfig.appName
+                ? `welcome to ${pluginConfig.appName}`
+                : 'Vue Pages Navigator',
             tags: pluginConfig.defineTags,
             pages: pluginConfig.pages,
             showDetail: false,
