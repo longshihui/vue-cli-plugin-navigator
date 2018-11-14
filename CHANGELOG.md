@@ -1,3 +1,12 @@
+<a name="1.4.0"></a>
+
+# [1.4.0](https://github.com/longshihui/vue-cli-plugin-navigator/compare/v1.3.1...v1.4.0) (2018-11-14)
+
+### Features
+
+-   **homepage:** 主页新增标题，取自用户 package.json 的 name 字段 ([8cfd672](https://github.com/longshihui/vue-cli-plugin-navigator/commit/8cfd672))
+-   **ui:** 优化插件的 ui 可发现性 ([752dd83](https://github.com/longshihui/vue-cli-plugin-navigator/commit/752dd83))
+
 <a name="1.3.1"></a>
 
 ## [1.3.1](https://github.com/longshihui/vue-cli-plugin-navigator/compare/v1.3.0...v1.3.1) (2018-11-08)
