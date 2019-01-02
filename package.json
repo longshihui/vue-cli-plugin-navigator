@@ -22,7 +22,7 @@
         "navigation"
     ],
     "author": "colorless",
-    "license": "ISC",
+    "license": "MIT",
     "bugs": {
         "url": "https://github.com/longshihui/vue-cli-plugin-navigator/issues"
     },
