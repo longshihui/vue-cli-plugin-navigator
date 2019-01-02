@@ -1,11 +1,18 @@
-<a name="1.4.1"></a>
+<a name="2.0.0"></a>
 
-## [1.4.1](https://github.com/longshihui/vue-cli-plugin-navigator/compare/v1.3.1...v1.4.1) (2018-11-15)
+# [2.0.0](https://github.com/longshihui/vue-cli-plugin-navigator/compare/v1.3.1...v2.0.0) (2019-01-02)
 
 ### Features
 
 -   **homepage:** 主页新增标题，取自用户 package.json 的 name 字段 ([8cfd672](https://github.com/longshihui/vue-cli-plugin-navigator/commit/8cfd672))
+-   **homepage:** 适应新的数据格式 ([ad63516](https://github.com/longshihui/vue-cli-plugin-navigator/commit/ad63516))
+-   **OptionsDefaulter:** 新增插件配置项管理 ([a5fbeaa](https://github.com/longshihui/vue-cli-plugin-navigator/commit/a5fbeaa))
 -   **ui:** 优化插件的 ui 可发现性 ([752dd83](https://github.com/longshihui/vue-cli-plugin-navigator/commit/752dd83))
+
+### BREAKING CHANGES
+
+-   **OptionsDefaulter:** 页面级别的 tags 和 description 不再在 projectOptions.pages 中定义
+    需要重新定义至 projectOptions.pluginOptions.naviagtor.pages 下
 
 <a name="1.3.1"></a>
 
