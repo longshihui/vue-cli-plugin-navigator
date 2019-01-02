@@ -1,4 +1,4 @@
-const mockNavigatorData = require('./lib/mockPluginData');
+const HomepageDataMocker = require('./lib/HomepageDataMocker');
 
 module.exports = {
     devServer: {
@@ -17,7 +17,7 @@ module.exports = {
                     .tap(htmlWebpackPluginOptionsArr => {
                         htmlWebpackPluginOptionsArr.forEach(options => {
                             options.meta = Object.assign(options.meta || {}, {
-                                navigator: mockNavigatorData()
+                                navigator: HomepageDataMocker()
                             });
                         });
                         return htmlWebpackPluginOptionsArr;

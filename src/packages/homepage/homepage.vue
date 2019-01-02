@@ -2,7 +2,7 @@
     <div id="app">
         <section class="section"><div id="logo"></div></section>
         <section class="section">
-            <h1 class="h1">{{ appName }}</h1>
+            <h1 class="h1">{{ title }}</h1>
         </section>
         <section class="section">
             <v-input
@@ -147,9 +147,7 @@ export default Vue.extend({
         const pluginConfig: PluginConfig = getConfig();
         return {
             userInput: '',
-            appName: pluginConfig.appName
-                ? `welcome to ${pluginConfig.appName}`
-                : 'Vue Pages Navigator',
+            title: pluginConfig.title,
             tags: pluginConfig.defineTags,
             pages: pluginConfig.pages,
             showDetail: false,
