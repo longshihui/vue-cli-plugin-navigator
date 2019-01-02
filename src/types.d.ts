@@ -1,4 +1,5 @@
 declare interface PageConfig {
+    name: string,
     // 页面标题
     title: string,
     // 页面访问路径
@@ -15,7 +16,7 @@ declare interface Tag {
 }
 
 declare interface PluginConfig {
-    appName: string,
+    title: string,
     defineTags: Tag[],
     pages: PageConfig[]
 }
