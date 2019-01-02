@@ -1,7 +1,7 @@
 /* eslint-disable*/
 const path = require('path');
 const fs = require('fs');
-const createPluginData = require('./createPluginData');
+const createPluginData = require('../lib/HomepageDataCreator');
 const PLUGIN_NAME = 'vue-cli-plugin-navigator';
 /**
  * plugin entry

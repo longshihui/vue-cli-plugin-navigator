@@ -10,11 +10,8 @@
         "vue",
         "cli",
         "plugin",
-        "helper",
         "pages",
         "vue-cli",
-        "vue-cli3",
-        "vue-cli 3",
         "vue-cli-plugin",
         "dev",
         "development",
@@ -22,12 +19,7 @@
         "multiple",
         "homepage",
         "navigator",
-        "multi mode",
-        "multi pages mode",
-        "multi page of homepage",
-        "multiple mode",
-        "multiple pages mode",
-        "multiple page of homepage"
+        "navigation"
     ],
     "author": "colorless",
     "license": "ISC",
@@ -46,10 +38,10 @@
     },
     "dependencies": {
         "html-webpack-plugin": "^3.2.0",
-        "lodash.get": "^4.4.2",
+        "lodash": "^4.17.11",
         "vue": "^2.5.17"
     },
-    "main": "./lib/vue-cli-plugin.js",
+    "main": "./service/index.js",
     "devDependencies": {
         "@vue/cli-plugin-babel": "^3.1.1",
         "@vue/cli-plugin-eslint": "^3.1.5",

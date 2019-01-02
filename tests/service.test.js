@@ -1,6 +1,6 @@
 const Service = require('@vue/cli-service');
 const path = require('path');
-const navigatorPlugin = require('../lib/vue-cli-plugin');
+const navigatorPlugin = require('../service');
 
 const PLUGIN_NAME = 'vue-cli-plugin-navigator';
 const SPA_PROJECT_PATH = path.resolve('./tests/spa-project');
