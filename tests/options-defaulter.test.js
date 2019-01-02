@@ -94,13 +94,18 @@ describe('指定pluginOptions.navigator', () => {
             page1: {
                 tags: ['page'],
                 description: "i'm page1"
+            },
+            'page3.dot': {
+                tags: ['dot page'],
+                description: 'my name have a dot!'
             }
         }
     };
     const projectOptions = {
         pages: {
             page1: './page1.js',
-            page2: './page2.js'
+            page2: './page2.js',
+            'page3.dot': './page3.js'
         },
         pluginOptions: {
             navigator: originalOptions
@@ -174,6 +179,36 @@ describe('指定pluginOptions.navigator', () => {
                 () => {
                     expect(finalOptions.pages.page2.description).toBe(
                         originalOptions.defaults.description
+                    );
+                }
+            );
+        });
+        describe('page3.dot', () => {
+            it(
+                'page3.dot的tags为: ' +
+                    originalOptions.pages['page3.dot'].tags.join(','),
+                () => {
+                    expect(
+                        Array.isArray(finalOptions.pages['page3.dot'].tags)
+                    ).toBe(true);
+                    expect(finalOptions.pages['page3.dot'].tags.length).toBe(
+                        originalOptions.pages['page3.dot'].tags.length
+                    );
+                    expect(
+                        sameArray(
+                            finalOptions.pages['page3.dot'].tags,
+                            originalOptions.pages['page3.dot'].tags
+                        )
+                    ).toBe(true);
+                }
+            );
+
+            it(
+                'page3.dot的description为: ' +
+                    originalOptions.pages['page3.dot'].description,
+                () => {
+                    expect(finalOptions.pages['page3.dot'].description).toBe(
+                        originalOptions.pages['page3.dot'].description
                     );
                 }
             );
