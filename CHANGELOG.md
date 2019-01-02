@@ -1,6 +1,10 @@
-<a name="2.0.0"></a>
+<a name="2.0.1"></a>
 
-# [2.0.0](https://github.com/longshihui/vue-cli-plugin-navigator/compare/v1.3.1...v2.0.0) (2019-01-02)
+## [2.0.1](https://github.com/longshihui/vue-cli-plugin-navigator/compare/v1.3.1...v2.0.1) (2019-01-02)
+
+### Bug Fixes
+
+-   修复 OptionDefaulter 对页面名字带.等特殊字符取值不正确的问题 ([35b3208](https://github.com/longshihui/vue-cli-plugin-navigator/commit/35b3208))
 
 ### Features
 
