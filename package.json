@@ -46,7 +46,7 @@
         "@vue/cli-plugin-babel": "^3.1.1",
         "@vue/cli-plugin-eslint": "^3.1.5",
         "@vue/cli-plugin-typescript": "^3.1.1",
-        "@vue/cli-service": "^3.1.4",
+        "@vue/cli-service": "^3.3.0",
         "@vue/eslint-config-airbnb": "^4.0.0",
         "@vue/eslint-config-typescript": "^3.1.1",
         "commitizen": "^2.10.1",
