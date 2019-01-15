@@ -1,3 +1,11 @@
+<a name="2.0.2"></a>
+
+## [2.0.2](https://github.com/longshihui/vue-cli-plugin-navigator/compare/v1.3.1...v2.0.2) (2019-01-15)
+
+### Features
+
+-   **service:** 兼容 cli 3.3.0 版本 ([24ba2f9](https://github.com/longshihui/vue-cli-plugin-navigator/commit/24ba2f9)), closes [#1](https://github.com/longshihui/vue-cli-plugin-navigator/issues/1)
+
 <a name="2.0.1"></a>
 
 ## [2.0.1](https://github.com/longshihui/vue-cli-plugin-navigator/compare/v1.3.1...v2.0.1) (2019-01-02)

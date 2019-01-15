@@ -1,5 +1,5 @@
 /* eslint-disable*/
-const path = require('path');
+const path = require('path').posix;
 const fs = require('fs');
 const HomepageDataCreator = require('../lib/HomepageDataCreator');
 const OptionsDefaulter = require('../lib/OptionsDefaulter');
@@ -19,6 +19,8 @@ module.exports = (api, projectOptions) => {
         ? path.resolve('./')
         : './node_modules/vue-cli-plugin-navigator';
     const packageJSON = readPackageConfig();
+    // Compatible with cli 3.3.0
+    const publicPath = projectOptions.publicPath || projectOptions.baseUrl;
 
     let pluginOptions = utils.getPluginOptions(
         projectOptions,
@@ -64,10 +66,7 @@ module.exports = (api, projectOptions) => {
             rewrites: [
                 {
                     from: /./,
-                    to: require('path').posix.join(
-                        projectOptions.baseUrl,
-                        `${PLUGIN_NAME}.html`
-                    )
+                    to: path.join(publicPath, `${PLUGIN_NAME}.html`)
                 }
             ]
         });

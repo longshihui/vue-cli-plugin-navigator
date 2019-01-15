@@ -9,14 +9,15 @@ const MULTIPLE_PAGES_PROJECT_PATH = path.resolve('./tests/pages-project');
 process.env.__VUE_CLI_PLUGIN_NAVIGATOR_TEST__ = true;
 process.env.VUE_CLI_TEST = true;
 
-function createService(projectPath, mode) {
+function createService(projectPath, mode, projectOptions) {
     const service = new Service(projectPath, {
         plugins: [
             {
                 id: 'inline:' + PLUGIN_NAME,
                 apply: navigatorPlugin
             }
-        ]
+        ],
+        inlineOptions: projectOptions
     });
     service.init(mode);
     return service;
@@ -31,7 +32,14 @@ describe('插件生效灰度测试', () => {
     test('多页模式下，插件生效', () => {
         const service = createService(
             MULTIPLE_PAGES_PROJECT_PATH,
-            'development'
+            'development',
+            {
+                assetsDir: './',
+                pages: {
+                    page1: './src/pages/page1.js',
+                    page2: './src/pages/page2.js'
+                }
+            }
         );
         const webpackConfig = service.resolveWebpackConfig();
         expect(Object.keys(webpackConfig.entry).length).toBe(3);
@@ -40,9 +48,52 @@ describe('插件生效灰度测试', () => {
     test('多页模式下，插件只对development mode有效', () => {
         const service = createService(
             MULTIPLE_PAGES_PROJECT_PATH,
-            'production'
+            'production',
+            {
+                publicPath: '/static',
+                assetsDir: './',
+                pages: {
+                    page1: './src/pages/page1.js',
+                    page2: './src/pages/page2.js'
+                }
+            }
         );
         const webpackConfig = service.resolveWebpackConfig();
         expect(Object.keys(webpackConfig.entry).length).toBe(2);
+    });
+});
+
+describe('webpack dev server配置', () => {
+    const projectOptions = {
+        publicPath: '/static/',
+        assetsDir: './',
+        pages: {
+            page1: './src/pages/page1.js',
+            page2: './src/pages/page2.js'
+        }
+    };
+    const service = createService(
+        MULTIPLE_PAGES_PROJECT_PATH,
+        'development',
+        projectOptions
+    );
+    const webpackConfig = service.resolveWebpackConfig();
+    test('index', () => {
+        expect(webpackConfig.devServer.index).toBe(
+            'vue-cli-plugin-navigator.html'
+        );
+    });
+    test('openPage', () => {
+        expect(webpackConfig.devServer.openPage).toBe(
+            'vue-cli-plugin-navigator.html'
+        );
+    });
+    test('historyApiFallback', () => {
+        expect(webpackConfig.devServer.historyApiFallback.rewrites[0].to).toBe(
+            path.resolve(
+                projectOptions.publicPath,
+                'vue-cli-plugin-navigator.html'
+            )
+        );
     });
 });
