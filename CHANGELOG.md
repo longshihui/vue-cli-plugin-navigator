@@ -1,3 +1,11 @@
+<a name="2.0.3"></a>
+
+## [2.0.3](https://github.com/longshihui/vue-cli-plugin-navigator/compare/v1.3.1...v2.0.3) (2019-01-17)
+
+### Bug Fixes
+
+-   **service:** 将插件的 html-webpack-plugin 位置添加到 plugins 首位 ([c34ee56](https://github.com/longshihui/vue-cli-plugin-navigator/commit/c34ee56))
+
 <a name="2.0.2"></a>
 
 ## [2.0.2](https://github.com/longshihui/vue-cli-plugin-navigator/compare/v1.3.1...v2.0.2) (2019-01-15)
