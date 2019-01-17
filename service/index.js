@@ -41,22 +41,6 @@ module.exports = (api, projectOptions) => {
             .add('vue')
             .add(resolve('./dist/homepage.js'))
             .end();
-        // add navigator entry html
-        config.plugin(PLUGIN_NAME).use(require('html-webpack-plugin'), [
-            {
-                meta: {
-                    navigator: HomepageDataCreator(
-                        projectOptions,
-                        pluginOptions
-                    )
-                },
-                filename: `${PLUGIN_NAME}.html`,
-                favicon: resolve('./public/favicon.ico'),
-                title: packageJSON.name,
-                template: resolve('./public/index.html'),
-                chunks: [PLUGIN_NAME]
-            }
-        ]);
         // refer the index page to plugin index
         config.devServer.set('index', `${PLUGIN_NAME}.html`);
         // default open plugin index when user config devServer.open = true
@@ -70,6 +54,29 @@ module.exports = (api, projectOptions) => {
                 }
             ]
         });
+    });
+
+    api.configureWebpack(config => {
+        if (!Array.isArray(config.plugins)) {
+            config.plugins = [];
+        }
+        const HtmlWebpackPlugin = require('html-webpack-plugin');
+        // add navigator entry html
+        config.plugins.unshift(
+            new HtmlWebpackPlugin({
+                meta: {
+                    navigator: HomepageDataCreator(
+                        projectOptions,
+                        pluginOptions
+                    )
+                },
+                filename: `${PLUGIN_NAME}.html`,
+                favicon: resolve('./public/favicon.ico'),
+                title: packageJSON.name,
+                template: resolve('./public/index.html'),
+                chunks: [PLUGIN_NAME]
+            })
+        );
     });
 
     function readPackageConfig() {
