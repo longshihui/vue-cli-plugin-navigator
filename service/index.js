@@ -7,6 +7,7 @@ const utils = require('../lib/utils');
 
 const PLUGIN_NAME = 'vue-cli-plugin-navigator';
 const PLUGIN_NAMESPACE = 'navigator';
+const PLUGIN_DIR = path.resolve(__dirname, '..', './');
 /**
  * plugin entry
  * @param api refer @vue/cli-serve PluginApi
@@ -14,10 +15,6 @@ const PLUGIN_NAMESPACE = 'navigator';
  */
 module.exports = (api, projectOptions) => {
     if (!utils.isDevelopment() || utils.isSPA(projectOptions)) return;
-
-    const PLUGIN_DIR = process.env.__VUE_CLI_PLUGIN_NAVIGATOR_TEST__
-        ? path.resolve('./')
-        : './node_modules/vue-cli-plugin-navigator';
     const packageJSON = readPackageConfig();
     // Compatible with cli 3.3.0
     const publicPath = projectOptions.publicPath || projectOptions.baseUrl;
