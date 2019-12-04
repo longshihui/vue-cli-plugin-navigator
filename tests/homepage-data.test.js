@@ -167,3 +167,30 @@ describe('projectOptions.pages配置为对象时', () => {
         });
     });
 });
+
+describe('projectOptions.pages指定了filename时', () => {
+    const packageJSON = {
+        name: 'app'
+    };
+    const projectOptions = {
+        pages: {
+            page1: {
+                entry: './src/page1.js',
+                title: 'page1 title',
+                filename: 'changedPage1Name'
+            },
+            page2: {
+                entry: './src/page2.js',
+                title: 'page2 title'
+            }
+        }
+    };
+    pluginOptions = OptionsDefaulter(projectOptions, packageJSON, null);
+    const data = Encryptor.decoding(DataCreator(projectOptions, pluginOptions));
+    it('page1的path为/changedPage1Name', () => {
+        expect(data.pages[0].path === '/changedPage1Name').toBe(true);
+    });
+    it('page2的path为/page2.html', () => {
+        expect(data.pages[1].path === '/page2.html').toBe(true);
+    });
+});
