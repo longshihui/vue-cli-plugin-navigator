@@ -4,6 +4,7 @@ const fs = require('fs');
 const HomepageDataCreator = require('../lib/HomepageDataCreator');
 const OptionsDefaulter = require('../lib/OptionsDefaulter');
 const utils = require('../lib/utils');
+const _ = require('lodash');
 
 const PLUGIN_NAME = 'vue-cli-plugin-navigator';
 const PLUGIN_NAMESPACE = 'navigator';
@@ -31,13 +32,6 @@ module.exports = (api, projectOptions) => {
     );
 
     api.chainWebpack(config => {
-        // add navigator entry
-        // replace original vue-cli config
-        config
-            .entry(PLUGIN_NAME)
-            .add('vue')
-            .add(resolve('./dist/homepage.js'))
-            .end();
         // refer the index page to plugin index
         config.devServer.set('index', `${PLUGIN_NAME}.html`);
         // default open plugin index when user config devServer.open = true
@@ -65,15 +59,26 @@ module.exports = (api, projectOptions) => {
                     navigator: HomepageDataCreator(
                         projectOptions,
                         pluginOptions
-                    )
+                    ),
+                    entry_path: `/${PLUGIN_NAME}/homepage.js`
                 },
                 filename: `${PLUGIN_NAME}.html`,
                 favicon: resolve('./public/favicon.ico'),
                 title: packageJSON.name,
                 template: resolve('./public/index.html'),
-                chunks: [PLUGIN_NAME]
+                chunks: []
             })
         );
+        let oldDevServerSetup = _.noop;
+        if (_.isFunction(config.devServer.before)) {
+            oldDevServerSetup = config.devServer.before;
+        }
+        config.devServer.before = function(app, server) {
+            app.get(`/${PLUGIN_NAME}/homepage.js`, function(req, res) {
+                res.end(fs.readFileSync(resolve('./dist/homepage.js')));
+            });
+            oldDevServerSetup(app, server);
+        };
     });
 
     function readPackageConfig() {

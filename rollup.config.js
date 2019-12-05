@@ -5,6 +5,9 @@ import typescript from 'rollup-plugin-typescript2';
 import path from 'path';
 import rm from 'rimraf';
 import autoprefixer from 'autoprefixer';
+import babel from 'rollup-plugin-babel';
+import { terser } from 'rollup-plugin-terser';
+import replace from 'rollup-plugin-replace';
 
 function getPackage(name) {
     return path.posix.resolve('./src/packages', name, 'main.ts');
@@ -19,18 +22,27 @@ export default [
         input: getPackage('homepage'),
         output: {
             file: './dist/homepage.js',
-            format: 'esm'
+            format: 'iife'
         },
-        external: ['vue'],
         plugins: [
             resolve(),
             commonjs(),
-            typescript(),
+            replace({
+                'process.env.NODE_ENV': JSON.stringify('production')
+            }),
+            typescript({
+                clean: true
+            }),
             vue({
                 style: {
                     postcssPlugins: [autoprefixer()]
                 }
-            })
+            }),
+            babel({
+                exclude: 'node_modules/**',
+                runtimeHelpers: true
+            }),
+            terser()
         ]
     }
 ];

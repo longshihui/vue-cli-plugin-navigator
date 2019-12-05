@@ -12,5 +12,12 @@
     </noscript>
     <div id="app"></div>
     <!-- built files will be auto injected -->
+    <script>
+      var entryPathMeta = document.querySelector('meta[name="entry_path"]');
+      var path = entryPathMeta.getAttribute('content');
+      var entryScript = document.createElement('script');
+      entryScript.src = path;
+      document.body.appendChild(entryScript);
+    </script>
   </body>
 </html>
