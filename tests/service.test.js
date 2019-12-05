@@ -42,8 +42,8 @@ describe('插件生效灰度测试', () => {
             }
         );
         const webpackConfig = service.resolveWebpackConfig();
-        expect(Object.keys(webpackConfig.entry).length).toBe(3);
-        expect(PLUGIN_NAME in webpackConfig.entry).toBe(true);
+        expect(Object.keys(webpackConfig.entry).length).toBe(2);
+        expect(PLUGIN_NAME in webpackConfig.entry).toBe(false);
     });
     test('多页模式下，插件只对development mode有效', () => {
         const service = createService(
