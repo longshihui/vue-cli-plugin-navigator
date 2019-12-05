@@ -1,3 +1,16 @@
+<a name="2.1.0"></a>
+
+# [2.1.0](https://github.com/longshihui/vue-cli-plugin-navigator/compare/v2.0.3...v2.1.0) (2019-12-05)
+
+### Bug Fixes
+
+-   修复因 webpack splitChunks 的 cacheGroups 分离出本插件代码导致无法正常运行的问题 ([bc80e7b](https://github.com/longshihui/vue-cli-plugin-navigator/commit/bc80e7b))
+
+### Features
+
+-   **service:** update PLUGIN_DIR resolve method ([86ce30f](https://github.com/longshihui/vue-cli-plugin-navigator/commit/86ce30f))
+-   新增对 filename 的支持 close [#11](https://github.com/longshihui/vue-cli-plugin-navigator/issues/11) ([f2e754c](https://github.com/longshihui/vue-cli-plugin-navigator/commit/f2e754c))
+
 <a name="2.0.3"></a>
 
 ## [2.0.3](https://github.com/longshihui/vue-cli-plugin-navigator/compare/v1.3.1...v2.0.3) (2019-01-17)
