@@ -9,22 +9,33 @@ on:
 jobs:
   # 合并PR
   merge-pr:
+    name: 合并PR
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      if ${{ GITHUB_ACTOR	=== 'dependabot' }}
-      - uses: actions/checkout@master
-      - run: git pull
-      - run: git merge ${{ GITHUB_REF }}
+      - name: 判断是否为依赖机器人
+        if: ${{ GITHUB_ACTOR	=== 'dependabot' }}
+        uses: actions/checkout@master
+      - name: 合并依赖分支
+        run: git pull
+        run: git merge ${{ GITHUB_REF }}
   testing: 
+    name: 执行单测
     needs: [merge-pr]
-    runs-on:  ubuntu-latest
+    runs-on: ubuntu-latest
     steps: 
-      - run: npm install
-      - run: npm run test
-  bump-version: 
+      - name: 更新依赖
+        run: npm install
+      - name: 执行单元测试
+        run: npm run test
+  bump-version:
+    name: '更新版本'
     needs: [merge-pr, testing]
+    runs-on: ubuntu-latest
+    steps: 
+      - name: 更新package.json的版本号
+        run: npm version patch
   release:
     needs: [bump-version]
     runs-on: ubuntu-latest
