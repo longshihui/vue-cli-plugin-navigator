@@ -57,7 +57,7 @@
         "lint-staged": "^7.3.0",
         "mockjs": "^1.0.1-beta3",
         "node-sass": "^4.9.0",
-        "postcss": "^7.0.5",
+        "postcss": "^8.2.10",
         "prettier": "^1.14.3",
         "rimraf": "^2.6.2",
         "rollup": "^0.66.6",
